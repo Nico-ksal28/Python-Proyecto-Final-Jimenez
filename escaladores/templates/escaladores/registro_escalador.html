@@ -6,9 +6,24 @@
   <title>Lista de escaladores</title>
 </head>
 <body>
+  <h1>Lista Escaladores</h1>
   <ul>
-    {% for Nuevo_escalador in pagina_escalada %}
+    {% for Nuevo_escalador in nuevo_escalador %}
     <li>{{Nuevo_escalador}}</li>
+    {% endfor %}
+  </ul>
+
+  <h1>Lista Rutas</h1>
+  <ul>
+    {% for nueva_ruta in nueva_ruta%}
+    <li>{{nueva_ruta}}</li>
+    {% endfor %}
+  </ul>
+
+  <h1>Lista Bloques</h1>
+  <ul>
+    {% for nuevo_bloque in nuevo_bloque%}
+    <li>{{nuevo_bloque}}</li>
     {% endfor %}
   </ul>
 </body>
