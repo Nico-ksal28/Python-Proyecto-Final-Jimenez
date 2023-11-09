@@ -6,7 +6,7 @@ from escaladores.models import nuevo_bloque
 
 # Create your views here.
 
-def registrar_escaladores(request):
+def registro_escalada(request):
     contexto = {
         'nuevo_escalador': Nuevo_escalador.objects.all,
         'nueva_ruta': nueva_ruta.objects.all,
@@ -14,7 +14,7 @@ def registrar_escaladores(request):
     }
     http_response = render(
         request=request,
-        template_name= 'escaladores/registro_escalador.html',
+        template_name= 'escaladores/informacion_escalada.html',
         context=contexto,
     )
     return http_response
