@@ -6,7 +6,7 @@ from escaladores.models import nuevo_bloque
 
 # Create your views here.
 
-def registro_escalada(request):
+def informacion_escalada(request):
     contexto = {
         'nuevo_escalador': Nuevo_escalador.objects.all,
         'nueva_ruta': nueva_ruta.objects.all,
