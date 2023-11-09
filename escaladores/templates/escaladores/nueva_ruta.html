@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+<title>nueva_via</title>
+{% endblock titulo %}
+
+{% block contenido %}
+
+  <h1 style="color: blue;"> Registro vias</h1>
+  <ul>
+    {% for nueva_ruta in nueva_ruta %}
+    <li>{{nueva_ruta}}</li>
+    {% endfor %}
+  </ul>
+
+{% endblock contenido %}

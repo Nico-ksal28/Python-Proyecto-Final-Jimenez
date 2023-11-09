@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+<title>nuevo_bloque</title>
+{% endblock titulo %}
+
+{% block contenido %}
+
+  <h1 style="color: blue;"> Registro bloques</h1>
+  <ul>
+    {% for nuevo_bloque in nuevo_bloque %}
+    <li>{{nuevo_bloque}}</li>
+    {% endfor %}
+  </ul>
+
+{% endblock contenido %}

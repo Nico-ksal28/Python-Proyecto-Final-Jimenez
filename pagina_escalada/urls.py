@@ -25,6 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path ("clip_blog/", include("escaladores.urls")),
     
-    path("clip/", saludar_con_html),
+    path("", saludar_con_html, name="inicio"),
 ]
     
