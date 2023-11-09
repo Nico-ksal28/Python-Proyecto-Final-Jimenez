@@ -1,8 +1,6 @@
 from django.shortcuts import render
 
-from escaladores.models import Nuevo_escalador
-from escaladores.models import nueva_ruta
-from escaladores.models import nuevo_bloque
+from escaladores.models import *
 
 # Create your views here.
 
@@ -18,3 +16,4 @@ def informacion_escalada(request):
         context=contexto,
     )
     return http_response
+

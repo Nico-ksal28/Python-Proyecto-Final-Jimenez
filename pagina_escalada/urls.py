@@ -17,7 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from pagina_escalada.views import saludar_con_html
+
+#urls de la app escaladores
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path ("clip_blog/", include("escaladores.urls")),
+    
+    path("clip/", saludar_con_html),
 ]
+    
