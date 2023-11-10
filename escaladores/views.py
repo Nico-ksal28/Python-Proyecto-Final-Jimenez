@@ -118,9 +118,7 @@ def buscar_rutas(request):
         # Filtro simple
         rutas = nueva_ruta.objects.filter(grado__contains=busqueda)
         # Ejemplo filtro avanzado
-        #rutas = nueva_ruta.objects.filter(
-         #Q(nombre_ruta__icontains=busqueda) | Q(grado__contains=busqueda)| Q(nombre_parque__contains=busqueda)
-        #)
+        #rutas = nueva_ruta.objects.filter(Q(nombre_ruta__icontains=busqueda) | Q(grado__contains=busqueda)| Q(nombre_parque__contains=busqueda))
 
         contexto = {
             "rutas": rutas,
