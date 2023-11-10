@@ -5,6 +5,8 @@ Registrar bloque
 {% endblock titulo %}
 
 {% block contenido %}
+<h3 style="color: blue">Registrar bloque</h3>
+
 <form method="post">
   {% csrf_token %}
   {{ formulario.as_p }}
