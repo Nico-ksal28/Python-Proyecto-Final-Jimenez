@@ -1,5 +1,9 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.db.models import Q
+
+
+
 from escaladores.forms import nueva_rutaFormulario, nuevo_bloqueFormulario, Nuevo_escaladorFormulario
 from escaladores.models import *
 
@@ -106,3 +110,24 @@ def registrar_escalador(request):
        context={'formulario': formulario}
    )
    return http_response
+
+def buscar_rutas(request):
+    if request.method == "POST":
+        data = request.POST
+        busqueda = data["busqueda"]
+        # Filtro simple
+        rutas = nueva_ruta.objects.filter(grado__contains=busqueda)
+        # Ejemplo filtro avanzado
+        #rutas = nueva_ruta.objects.filter(
+         #Q(nombre_ruta__icontains=busqueda) | Q(grado__contains=busqueda)| Q(nombre_parque__contains=busqueda)
+        #)
+
+        contexto = {
+            "rutas": rutas,
+        }
+        http_response = render(
+            request=request,
+            template_name='escaladores/nueva_ruta.html',
+            context=contexto,
+        )
+        return http_response
