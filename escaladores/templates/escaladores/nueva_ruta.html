@@ -7,7 +7,7 @@
 {% block contenido %}
 
 <h1 style="color: #0d6efd;"> Listado rutas</h1>
-<a type="button" class="btn btn-outline-primary" href="{%url 'registrar_escalador'%}">Nueva ruta</a>
+<a type="button" class="btn btn-outline-primary" href="{%url 'registrar_ruta'%}">Nueva ruta</a>
 <br></br>
 
 <form action="{% url 'buscar_rutas' %}" method="post">
@@ -25,7 +25,6 @@
   </ul>
 
   <a class="list-inline-item" href="{%url 'informacion_vias'%}">Ver lista completa</a>
-  <a class="list-inline-item" href="{%url 'registrar_ruta'%}">Registrar nueva ruta</a>
 
 
 {% endblock contenido %}

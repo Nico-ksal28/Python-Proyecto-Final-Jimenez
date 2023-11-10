@@ -6,10 +6,11 @@
 
 {% block contenido %}
 
-  <h1 style="color: blue;"> Lista de escaladores</h1>
-  <a type="button" class="btn btn-outline-primary" href="{%url 'registrar_escalador'%}">Registro nuevo escalador</a>
+  <h1 style="color: #0d6efd;"> Lista de escaladores</h1>
+  <a type="button" class="btn btn-outline-primary" href="{%url 'registrar_escalador'%}">Nuevo escalador</a>
   <br></br>
-  <h4 style="color: blue;">Escaladores registrados </h4>
+  
+  <h4 style="color: #0d6efd;">Escaladores registrados </h4>
   <ul>
     {% for Nuevo_escalador in nuevo_escalador %}
     <li>{{Nuevo_escalador}}</li>

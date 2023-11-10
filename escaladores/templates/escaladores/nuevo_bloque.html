@@ -7,12 +7,11 @@
 {% block contenido %}
 
 
-  <h1 style="color: blue;"> Registro bloques</h1>
+<h1 style="color: #0d6efd;"> Listado bloques</h1>
+<a type="button" class="btn btn-outline-primary" href="{%url 'registrar_bloque'%}">Nuevo bloque</a>
 <br></br>
-  <a class="navbar-brand" href="{%url 'registrar_bloque'%}">Registrar nuevo bloque</a>
-  <br></br>
 
-  <h3 style="color: blue">Lista de Bloques registrados</h3>
+<h4 style="color: #0d6efd">Lista de Bloques registrados</h3>
   <ul>
     {% for nuevo_bloque in nuevo_bloque %}
     <li>{{nuevo_bloque}}</li>
