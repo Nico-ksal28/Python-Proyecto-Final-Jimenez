@@ -1,4 +1,4 @@
-# Pagina Escalada
+# PAgina escalada
 
 ## Instrucciones instalar proyecto en local
 + Crea una carpeta contenedora madre
@@ -21,10 +21,8 @@ python manage.py createsuperuser
 127.0.0.1:8000/admin
 ```
 
-# Superusuario de pruebas
-username:admin
-contraseña:admin
+# Funcionalidades
 
-# Usuarios normales
--
--
+Escaladores permite registrar escaladores en la base dedatos
+Rutas permite agregar rutas con dificultad y parque en la base de datos
+Bloques permite agregar boques con dificultad y parque en la base de datos
