@@ -1,15 +1,14 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.db.models import Q
 
-
-
-from escaladores.forms import nueva_rutaFormulario, nuevo_bloqueFormulario, Nuevo_escaladorFormulario
+from escaladores.forms import *
 from escaladores.models import *
 
 # Create your views here.
 
-def informacion_escalada(request):
+"""def informacion_escalada(request):
     contexto = {
         'nuevo_escalador': Nuevo_escalador.objects.all,
     }
@@ -18,29 +17,7 @@ def informacion_escalada(request):
         template_name= 'escaladores/informacion_escalada.html',
         context=contexto,
     )
-    return http_response
-
-def informacion_vias(request):
-    contexto = {
-        'nueva_ruta': nueva_ruta.objects.all,
-    }
-    http_response = render(
-        request=request,
-        template_name= 'escaladores/nueva_ruta.html',
-        context=contexto,
-    )
-    return http_response
-
-def informacion_bloques(request):
-    contexto = {
-        'nuevo_bloque': nuevo_bloque.objects.all,
-    }
-    http_response = render(
-        request=request,
-        template_name= 'escaladores/nuevo_bloque.html',
-        context=contexto,
-    )
-    return http_response
+    return http_response"""
 
 def registrar_ruta(request):
    if request.method == "POST":
@@ -119,12 +96,12 @@ def buscar_rutas(request):
         # rutas = nueva_ruta.objects.filter(grado__contains=busqueda)
         # Ejemplo filtro avanzado
 
-        rutas = nueva_ruta.objects.filter(
+        ruta = nueva_ruta.objects.filter(
             Q(nombre_ruta__icontains=busqueda) | Q(grado__contains=busqueda) | Q(nombre_parque__contains=busqueda)
             )
 
         contexto = {
-            "nueva_ruta": rutas,
+            "nueva_ruta": ruta,
         }
         http_response = render(
             request=request,
@@ -132,3 +109,54 @@ def buscar_rutas(request):
             context=contexto,
         )
         return http_response
+    
+def borrar_ruta(request, id):
+    
+    ruta= nueva_ruta.objects.get(id=id)
+    if request.method == "POST":
+        ruta.delete()
+        url_exitosa = reverse('informacion_vias')
+        return redirect(url_exitosa)
+
+def editar_ruta(request, id):
+
+    ruta = nueva_ruta.objects.get(id=id)
+    if request.method == "POST":
+        formulario = nueva_rutaFormulario(request.POST)
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            ruta.nombre_ruta = data['nombre_ruta']
+            ruta.grado = data['grado']
+            ruta.nombre_parque = data['nombre_parque']
+            ruta.save()
+
+            url_exitosa = reverse('informacion_vias')
+        return redirect(url_exitosa)
+    else:
+        inicial = {
+            'nombre_ruta': ruta.nombre_ruta,
+            'grado': ruta.grado,
+            'nombre_parque': ruta.nombre_parque,
+        }
+        formulario= nueva_rutaFormulario(initial=inicial)
+    return render(
+        request=request,
+        template_name='escaladores/registrar_ruta.html',
+       context={'formulario': formulario}
+    )
+
+#Vistas de Escaladores definidas por clase 
+
+#Escaladores
+class Nuevo_escaladorListView(ListView):
+    model = Nuevo_escalador
+    template_name= 'escaladores/informacion_escalada.html'
+
+class nueva_rutaListView(ListView):
+    model = nueva_ruta
+    template_name= 'escaladores/nueva_ruta.html'
+
+class nuevo_bloqueListView(ListView):
+    model = nuevo_bloque
+    template_name= 'escaladores/nuevo_bloque.html'

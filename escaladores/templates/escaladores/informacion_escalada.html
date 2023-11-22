@@ -6,16 +6,35 @@
 
 {% block contenido %}
 
-  <h1 style="color: #0d6efd;"> Lista de escaladores</h1>
-  <a type="button" class="btn btn-outline-primary" href="{%url 'registrar_escalador'%}">Nuevo escalador</a>
+  <h1 style="color:rgb(34, 139, 34);"> Lista de escaladores</h1>
+  <a type="button" class=" btn btn-outline-primary" href="{%url 'registrar_escalador'%}">Nuevo escalador</a>
   <br></br>
   
   <h4 style="color: #0d6efd;">Escaladores registrados </h4>
-  <ul>
-    {% for Nuevo_escalador in nuevo_escalador %}
-    <li>{{Nuevo_escalador}}</li>
-    {% endfor %}
-  </ul>  
 
+  <table class ="table">
+    <tbody>
+      <tr>
+        <th>Nombre</th>
+        <th>Nivel</th>
+        <th>Preferencia</th>
+        <th></th>
+        <th></th>
+      </tr>
+      {% for Nuevo_escalador in object_list %}
+      <tr>
+        <td>{{Nuevo_escalador.nombre}}</td>
+        <td>{{Nuevo_escalador.nivel}}</td>
+        <td>{{Nuevo_escalador.preferencia}}</td>
+        <td><input type="submit" style="color: #0d6efd;background-color: #FFFFFF; border-radius: 4px; border-color:#0d6efd; border-width: thin " value="Editar"/>
+        </td>
+        <td><input type="submit" style="color: #0d6efd;background-color: #FFFFFF; border-radius: 4px; border-color:#0d6efd; border-width: thin " value="Eliminar"/>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+  
 
 {% endblock contenido %}
