@@ -24,6 +24,7 @@ from pagina_escalada.views import saludar_con_html
 urlpatterns = [
     path('admin/', admin.site.urls),
     path ("clip_blog/", include("escaladores.urls")),
+    path ("perfiles/", include("perfiles.urls")),
     
     path("", saludar_con_html, name="inicio"),
 ]
