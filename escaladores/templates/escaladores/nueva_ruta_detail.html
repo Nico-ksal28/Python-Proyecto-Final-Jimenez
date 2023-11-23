@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<p>
+ <strong>Nombre: </strong> {{object.nombre_ruta}}
+</p>
+<p>
+ <strong>Grado: </strong> {{object.grado}}
+</p>
+<p>
+ <strong>Parque: </strong> {{object.nombre_parque}}
+</p>
+
+<br>
+<a href="{% url 'informacion_vias' %}">Volver lista</a>
+<a href="{% url 'editar_ruta' object.id %}">Editar</a>
+
+{% endblock contenido %}

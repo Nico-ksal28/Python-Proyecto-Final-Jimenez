@@ -10,12 +10,6 @@
 <a type="button" class="btn btn-outline-primary" href="{%url 'registrar_ruta'%}">Nueva ruta</a>
 <br></br>
 
-<form action="{% url 'buscar_rutas' %}" method="post">
-  {% csrf_token %}
-  <input type="text" name="busqueda">
-  <input type="submit" style="color: #0d6efd;background-color: #FFFFFF; border-radius: 4px; border-color:#0d6efd; border-width: thin " value="Buscar"/>
-</form>
-<br></br>
 <h4 style="color: #0d6efd">Lista de rutas registradas</h4>
 
 <table class ="table">
@@ -33,22 +27,21 @@
       <td>{{nueva_ruta.grado}}</td>
       <td>{{nueva_ruta.nombre_parque}}</td>
       <td>
+        <a href="{%url "ver_ruta" nueva_ruta.id %}"><input type="submit" style="color: #0d6efd;background-color: #FFFFFF; border-radius: 4px; border-color:#0d6efd; border-width: thin " value="Ver"/></a>
+      </td>
+      <td>
         <a href= "{% url 'editar_ruta' nueva_ruta.id %}">
           <input type="submit" style="color: #0d6efd;background-color: #FFFFFF; border-radius: 4px; border-color:#0d6efd; border-width: thin " value="Editar"/>
         </a>
       </td>
       <td>
-        <form action= "{% url 'borrar_ruta' nueva_ruta.id %}" method="post">
-          {%csrf_token%}
-          <input type="submit" style="color: #0d6efd;background-color: #FFFFFF; border-radius: 4px; border-color:#0d6efd; border-width: thin " value="Eliminar"/>
-        </form>
-        </td>
+        <a href="{%url "eliminar_ruta" nueva_ruta.id %}">
+          <i class="bi bi-trash"></i>
+        </a>
+      </td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
-
-  <a class="list-inline-item" href="{%url 'informacion_vias'%}">Ver lista completa</a>
-
 
 {% endblock contenido %}

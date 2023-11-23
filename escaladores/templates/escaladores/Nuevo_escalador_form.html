@@ -9,9 +9,10 @@
 
 <form method="post">
   {% csrf_token %}
-  {{ formulario.as_p }}
-  <input class="btn btn-success" type="submit" value="Enviar Escalador" />
+  {{ form.as_p }}
+  <input class="btn btn-success" type="submit" value="Guardar" />
 </form>
+
 <br>
 <a href="{% url 'informacion_escalada' %}">Volver a la lista</a>
 {% endblock contenido %}

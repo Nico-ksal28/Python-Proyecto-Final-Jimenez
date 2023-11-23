@@ -26,15 +26,19 @@
         <td>{{Nuevo_escalador.nombre}}</td>
         <td>{{Nuevo_escalador.nivel}}</td>
         <td>{{Nuevo_escalador.preferencia}}</td>
-        <td><input type="submit" style="color: #0d6efd;background-color: #FFFFFF; border-radius: 4px; border-color:#0d6efd; border-width: thin " value="Editar"/>
+        <td>
+          <a href="{%url "ver_escalador" Nuevo_escalador.id %}"><input type="submit" style="color: #0d6efd;background-color: #FFFFFF; border-radius: 4px; border-color:#0d6efd; border-width: thin " value="Ver"/></a>
         </td>
-        <td><input type="submit" style="color: #0d6efd;background-color: #FFFFFF; border-radius: 4px; border-color:#0d6efd; border-width: thin " value="Eliminar"/>
+        <td>
+          <a href="{%url "editar_escalador" Nuevo_escalador.id %}"><input type="submit" style="color: #0d6efd;background-color: #FFFFFF; border-radius: 4px; border-color:#0d6efd; border-width: thin " value="Editar"/></a>
         </td>
+        <td>
+          <a href="{%url "eliminar_escalador" Nuevo_escalador.id %}">
+            <i class="bi bi-trash"></i>
+          </a>
+
       </tr>
       {% endfor %}
     </tbody>
-  </table>
-  
-  
-
+  </table> 
 {% endblock contenido %}

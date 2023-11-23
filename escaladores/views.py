@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.db.models import Q
 
@@ -19,7 +19,7 @@ from escaladores.models import *
     )
     return http_response"""
 
-def registrar_ruta(request):
+"""def registrar_ruta(request):
    if request.method == "POST":
        formulario = nueva_rutaFormulario(request.POST)
        if formulario.is_valid():
@@ -61,29 +61,6 @@ def registrar_bloque(request):
    http_response = render(
        request=request,
        template_name='escaladores/registrar_bloque.html',
-       context={'formulario': formulario}
-   )
-   return http_response
-
-def registrar_escalador(request):
-   if request.method == "POST":
-       formulario = Nuevo_escaladorFormulario(request.POST)
-       if formulario.is_valid():
-           data = formulario.cleaned_data  # es un diccionario 
-           nombre= data['nombre']
-           nivel = data['nivel']
-           preferencia = data['preferencia']
-           escalador = Nuevo_escalador(nombre=nombre, nivel=nivel, preferencia=preferencia)  # lo crean solo en RAM
-           escalador.save()  # Lo guardan en la Base de datos
-
-           # Redirecciono al usuario a la lista de cursos
-           url_exitosa = reverse('informacion_escalada')  
-           return redirect(url_exitosa)
-   else:  # GET
-       formulario = Nuevo_escaladorFormulario()
-   http_response = render(
-       request=request,
-       template_name='escaladores/registrar_escalador.html',
        context={'formulario': formulario}
    )
    return http_response
@@ -144,7 +121,7 @@ def editar_ruta(request, id):
         request=request,
         template_name='escaladores/registrar_ruta.html',
        context={'formulario': formulario}
-    )
+    )"""
 
 #Vistas de Escaladores definidas por clase 
 
@@ -153,10 +130,66 @@ class Nuevo_escaladorListView(ListView):
     model = Nuevo_escalador
     template_name= 'escaladores/informacion_escalada.html'
 
+class Nuevo_escaladorCreateView(CreateView):
+    model = Nuevo_escalador
+    fields = ('nombre', 'nivel', 'preferencia')
+    success_url = reverse_lazy ('informacion_escalada')
+
+class Nuevo_escaladorDetailView(DetailView):
+    model= Nuevo_escalador
+    success_url= reverse_lazy('informacion_escalada')
+
+class Nuevo_escaladorUpdateView(UpdateView):
+    model = Nuevo_escalador
+    fields = ('nombre', 'nivel', 'preferencia')
+    success_url = reverse_lazy ('informacion_escalada')
+
+class Nuevo_escaladorDeleteView(DeleteView):
+    model= Nuevo_escalador
+    success_url= reverse_lazy('informacion_escalada')
+
+#vias
 class nueva_rutaListView(ListView):
     model = nueva_ruta
     template_name= 'escaladores/nueva_ruta.html'
 
+class nueva_rutaCreateView(CreateView):
+    model = nueva_ruta
+    fields = ('nombre_ruta', 'grado', 'nombre_parque')
+    success_url = reverse_lazy ('infromacion_vias')
+
+class nueva_rutaDetailView(DetailView):
+    model= nueva_ruta
+    succes_url = reverse_lazy('informacion_vias')
+
+class nueva_rutaUpdateView(UpdateView):
+    model= nueva_ruta
+    fields = ('nombre_ruta', 'grado', 'nombre_parque')
+    success_url= reverse_lazy('informacion_vias')
+
+class nueva_rutaDeleteView(DeleteView):
+    model= nueva_ruta
+    success_url= reverse_lazy('informacion_vias')
+
+#bloques
 class nuevo_bloqueListView(ListView):
     model = nuevo_bloque
     template_name= 'escaladores/nuevo_bloque.html'
+
+class nuevo_bloqueCreateView(CreateView):
+    model = nuevo_bloque
+    fields = ('nombre_bloque', 'grado', 'nombre_parque')
+    success_url = reverse_lazy ('informacion_bloques')
+
+class nuevo_bloqueDetailView(DetailView):
+    model= nuevo_bloque
+    succes_url = reverse_lazy('informacion_bloques')
+
+class nuevo_bloqueUpdateView(UpdateView):
+    model= nuevo_bloque
+    fields = ('nombre_bloque', 'grado', 'nombre_parque')
+    success_url= reverse_lazy('informacion_bloques')
+
+class nuevo_bloqueDeleteView(DeleteView):
+    model= nuevo_bloque
+    success_url= reverse_lazy('informacion_bloques')

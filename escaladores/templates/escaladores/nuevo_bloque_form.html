@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 {% block titulo %}
-<title>Registro ruta</title>
+<title>Registro bloque</title>
 {% endblock titulo %}
 
 {% block contenido %}
-<h3 style="color: #0d6efd;">Registrar ruta </h3>
+<h3 style="color: #0d6efd;">Registrar bloque </h3>
 
 <form method="post">
   {% csrf_token %}
-  {{ formulario.as_p }}
+  {{ form.as_p }}
   <input class="btn btn-success" type="submit" value="Guardar" />
 </form>
 <br>
