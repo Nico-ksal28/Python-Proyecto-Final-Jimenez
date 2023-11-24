@@ -32,3 +32,12 @@ busqueda rutas en una barra de busqueda.
 
 majop
 sabina28
+
+nicoj
+Nico1015457848
+
+# super usuaios
+
+nicoj
+
+admin/admin
