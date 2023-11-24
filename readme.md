@@ -38,6 +38,5 @@ Nico1015457848
 
 # super usuaios
 
-nicoj
-
-admin/admin
+username: admin
+password: admin
