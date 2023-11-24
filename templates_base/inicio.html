@@ -8,6 +8,9 @@
 {% block contenido %}
 {% if user.is_authenticated %}
 <h1 style="color: rgb(34, 139, 34);">Buenos pegues {{user.first_name}}!</h1>
+<img src="{{ user.avatar.imagen.url }}" 
+width="500" 
+height="375"/>
 {%else%}
 <h1 style="color:rgb(34, 139, 34);">Bienvenidos a Clip!</h1>
 {%endif%}
