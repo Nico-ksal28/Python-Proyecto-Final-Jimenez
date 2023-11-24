@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from pagina_escalada.views import saludar_con_html
+from pagina_escalada.views import *
 
 #urls de la app escaladores
 

@@ -26,3 +26,9 @@ python manage.py createsuperuser
 Busqueda de escaladores, rutas y bloques
 añadir a una base de datos escaladores, rutas y bloques.
 busqueda rutas en una barra de busqueda.
+
+
+# usuarios registrados
+
+majop
+sabina28

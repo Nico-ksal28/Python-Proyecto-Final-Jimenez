@@ -6,6 +6,9 @@
 
 
 {% block contenido %}
-<h1 style="color:rgb(34, 139, 34);">Bienvenidos a Clip</h1>
-<h3 style="color:#5c5c5c;">Escalada y mas!</h3>
+{% if user.is_authenticated %}
+<h1 style="color: rgb(34, 139, 34);">Buenos pegues {{user.first_name}}!</h1>
+{%else%}
+<h1 style="color:rgb(34, 139, 34);">Bienvenidos a Clip!</h1>
+{%endif%}
 {% endblock contenido %}

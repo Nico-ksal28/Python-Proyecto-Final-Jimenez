@@ -7,6 +7,8 @@ from escaladores.views import *
 
 
 urlpatterns = [
+    path("about/", about, name="about"),
+    path("contacto/", contacto, name="contacto"),
     
     #URLs CLASES 
     #URLs ESCALADORES
