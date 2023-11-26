@@ -31,4 +31,11 @@ urlpatterns = [
     path("registro_bloque/",nuevo_bloqueCreateView.as_view(), name= "registrar_bloque"),
     path("editar_bloque/<int:pk>/", nuevo_bloqueUpdateView.as_view(), name = "editar_bloque"),
     path("eliminar_bloque/<int:pk>/",nuevo_bloqueDeleteView.as_view(), name="eliminar_bloque"),
+
+    #URLSs Blog
+    path ("pages/", blogListView.as_view(), name="pages"),
+    path ("pages/<int:pk>/", blogDetailView.as_view(), name="ver_page"),
+    path("registro_page/",blogCreateView.as_view(), name= "registrar_page"),
+    path("editar_page/<int:pk>/", blogUpdateView.as_view(), name = "editar_page"),
+    path("eliminar_page/<int:pk>/",blogDeleteView.as_view(), name="eliminar_page"),
 ]

@@ -1,5 +1,6 @@
+from datetime import datetime
 from django.shortcuts import render, redirect
-from django import forms 
+from django import forms
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.db.models import Q
@@ -7,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from escaladores.forms import *
 from escaladores.models import *
+
 
 # Create your views here.
 
@@ -43,11 +45,6 @@ class Nuevo_escaladorCreateView(LoginRequiredMixin, CreateView):
     fields = ('nombre', 'nivel', 'preferencia')
     success_url = reverse_lazy ('informacion_escalada')
 
-    def form_valid(self, form):
-        """If the form is valid, save the associated model."""
-        self.object = form.save(creador=self.request.user)
-        return super().form_valid(form)
-
 class Nuevo_escaladorDetailView(LoginRequiredMixin, DetailView):
     model= Nuevo_escalador
     success_url= reverse_lazy('informacion_escalada')
@@ -70,11 +67,6 @@ class nueva_rutaCreateView(LoginRequiredMixin, CreateView):
     model = nueva_ruta
     fields = ('nombre_ruta', 'grado', 'nombre_parque')
     success_url = reverse_lazy ('informacion_vias')
-
-    def form_valid(self, form):
-        #If the form is valid, save the associated model.
-        self.object = form.save(creador=self.request.user)
-        return super().form_valid(form)
 
 class nueva_rutaDetailView(DetailView):
     model= nueva_ruta
@@ -111,3 +103,27 @@ class nuevo_bloqueUpdateView(LoginRequiredMixin, UpdateView):
 class nuevo_bloqueDeleteView(LoginRequiredMixin, DeleteView):
     model= nuevo_bloque
     success_url= reverse_lazy('informacion_bloques')
+
+#Blog
+
+class blogListView(ListView):
+    model = blog
+    template_name= 'escaladores/blog.html'
+
+class blogCreateView(LoginRequiredMixin, CreateView):
+    model = blog
+    fields = ('titulo', 'subtitulo', 'cuerpo', 'autor')
+    success_url = reverse_lazy ('pages')
+
+class blogDetailView(LoginRequiredMixin, DetailView):
+    model= blog
+    success_url= reverse_lazy('pages')
+
+class blogUpdateView(LoginRequiredMixin, UpdateView):
+    model = blog
+    fields = ('titulo', 'subtitulo', 'cuerpo', 'autor')
+    success_url = reverse_lazy ('pages')
+
+class blogDeleteView(LoginRequiredMixin, DeleteView):
+    model= blog
+    success_url= reverse_lazy('pages')

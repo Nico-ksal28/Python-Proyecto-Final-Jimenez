@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<p>
+ <strong>Titulo: </strong> {{object.titulo}}
+</p>
+<p>
+ subtitulo: {{object.subtitulo}}
+</p>
+<p>
+    {{object.cuerpo}}
+</p>
+<p>
+    Autor: {{object.autor}}
+</p>
+<p>
+    Fecha: {{object.fecha}}
+</p>
+
+
+<br>
+<a href="{% url 'pages' %}">Volver lista</a>
+<a href="{% url 'editar_page' object.id %}">Editar</a>
+
+{% endblock contenido %}
