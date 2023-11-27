@@ -23,9 +23,8 @@ python manage.py createsuperuser
 
 # Funciones
 
-Busqueda de escaladores, rutas y bloques
-añadir a una base de datos escaladores, rutas y bloques.
-busqueda rutas en una barra de busqueda.
+Busqueda de escaladores, rutas y bloques. Tambien ub blog de escalada con noticias
+añadir a una base de datos escaladores, rutas, bloques y bloog de noticias
 
 
 # usuarios registrados
